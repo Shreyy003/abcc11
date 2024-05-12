@@ -1,0 +1,28 @@
+class Solution {
+    int isDigitSumPalindrome(int n) {
+        int digitSum = calculateDigitSum(n);
+        return isPalindrome(digitSum) ? 1 : 0;
+    }
+    
+    // Function to calculate the digit sum of a number
+    int calculateDigitSum(int num) {
+        int sum = 0;
+        while (num > 0) {
+            sum += num % 10;
+            num /= 10;
+        }
+        return sum;
+    }
+    
+    // Function to check if a number is palindrome
+    boolean isPalindrome(int num) {
+        int originalNum = num;
+        int reversedNum = 0;
+        while (num > 0) {
+            int digit = num % 10;
+            reversedNum = reversedNum * 10 + digit;
+            num /= 10;
+        }
+        return originalNum == reversedNum;
+    }
+}
